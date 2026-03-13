@@ -1,7 +1,10 @@
- name: Verify Human Identity
+name: Verify Human Identity
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - develop
 
 jobs:
   verify:
@@ -32,4 +35,4 @@ jobs:
 
       - name: Link Human to Agent
         run: |
-          node scripts/manualLinkHumanToAgent.js --challenge '{"name": "samuel", "description": "samuel AI Agent"}'
+          node scripts/manualLinkHumanToAgent.js --challenge '{"name":"samuel","description":"samuel AI Agent"}'
