@@ -6,6 +6,9 @@ on:
     branches:
       - develop
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -17,14 +20,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: '24'
 
       - name: Install ClawHub
-        run: |
-          npm install -g clawhub
-          clawhub --version
+        run: npm install -g clawhub
 
-      - name: Install Verified Agent Identity skill
+      - name: Install ClawHub skill
         run: clawhub install verified-agent-identity
 
       - name: Install script dependencies
