@@ -17,12 +17,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: 24
 
       - name: Install ClawHub
-        run: npm install -g clawhub
+        run: |
+          npm install -g clawhub
+          clawhub --version
 
-      - name: Install ClawHub skill
+      - name: Install Verified Agent Identity skill
         run: clawhub install verified-agent-identity
 
       - name: Install script dependencies
